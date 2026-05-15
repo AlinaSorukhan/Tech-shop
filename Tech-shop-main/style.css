@@ -1,0 +1,631 @@
+/* ===== АНИМИРОВАННЫЙ КОСМОС ===== */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(white 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: starsMove 120s linear infinite;
+    opacity: 0.15;
+    z-index: -1;
+}
+@keyframes starsMove {
+    from { transform: translate(0,0); }
+    to { transform: translate(-500px, -500px); }
+}
+.menu button {
+    padding: 8px 16px;
+    border: 1px solid #1e293b;
+    background: transparent;
+    color: #cbd5f5;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+.menu button:hover {
+    background: linear-gradient(270deg, #3b82f6, #06b6d4, #9333ea);
+    background-size: 400% 400%;
+    animation: gradientMove 3s ease infinite;
+    color: white;
+    box-shadow: 0 0 15px #3b82f6;
+}
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===== BODY ===== */
+body {
+    font-family: "Inter", Arial, sans-serif;
+    margin: 0;
+    background: radial-gradient(circle at top, #020617, #000);
+    color: #e2e8f0;
+}
+
+/* ===== HEADER ===== */
+header {
+    background: rgba(2,6,23,0.8);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid #1e293b;
+}
+
+/* ===== HERO ===== */
+.hero {
+    height: 240px;
+    background: linear-gradient(rgba(2,6,23,0.7), rgba(2,6,23,1)),
+    url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    text-shadow: 0 0 15px rgba(59,130,246,0.8);
+}
+.hero h2 { font-size: 36px; animation: pulse 2.5s infinite; }
+.hero p { opacity:0.9; }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* ===== MENU ===== */
+.menu {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 15px;
+}
+.menu button {
+    padding: 8px 16px;
+    border: 1px solid #1e293b;
+    background: transparent;
+    color: #cbd5f5;
+    border-radius: 20px;
+    cursor: pointer;
+}
+.menu button.active {
+    background: #3b82f6;
+    box-shadow: 0 0 10px #7b43ff;
+}
+
+/* ===== CART BUTTON ===== */
+#cart-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+#cart-btn {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #6d3bf6, #0666d4);
+    color: white;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    box-shadow: 0 0 15px rgba(59,130,246,0.6);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+#cart-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 25px rgba(59,130,246,0.8);
+}
+#cart-count {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #f87171;
+    color: white;
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+
+/* ===== CART BOX ===== */
+#cart {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    width: 320px;
+    max-height: 400px;
+    background: linear-gradient(to bottom right, rgba(2,6,23,0.95), rgba(20,20,60,0.9));
+    backdrop-filter: blur(15px);
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(59,130,246,0.4);
+    overflow-y: auto;
+    display: none;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+#cart.show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== CART ITEMS ===== */
+.cart-item { margin: 5px 0; }
+.cart-item .remove {
+    color: #f87171;
+    cursor: pointer;
+    font-weight: bold;
+    margin-left: 10px;
+    transition: 0.2s;
+}
+.cart-item .remove:hover { color: #ff4d4d; }
+.total { margin-top: 12px; font-weight: bold; font-size: 16px; color: #22c55e; text-align: right; }
+
+/* CART BUTTONS INSIDE CART */
+.clear-cart-btn, .checkout-btn {
+    margin-top: 10px;
+    width: 100%;
+    padding: 8px 0;
+    font-size: 14px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+.clear-cart-btn {
+    background: linear-gradient(135deg, #f43f5e, #ec4899);
+    color: white;
+    box-shadow: 0 0 10px rgba(244,63,94,0.6);
+}
+.clear-cart-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(244,63,94,0.8);
+}
+.checkout-btn {
+    background: linear-gradient(135deg, #10b981, #3b82f6);
+    color: white;
+    box-shadow: 0 0 15px rgba(16,185,129,0.7);
+}
+.checkout-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px rgba(16,185,129,0.9);
+}
+
+/* ===== PRODUCTS GRID ===== */
+#main-products {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+    padding: 20px;
+    position: relative;
+}
+#main-products::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle, rgba(59,130,246,0.15), transparent);
+    z-index: -1;
+}
+.product {
+    background: rgba(2,6,23,0.8);
+    backdrop-filter: blur(12px);
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 15px;
+    text-align: center;
+    transition: 0.3s;
+    position: relative;
+}
+.product:hover {
+    transform: translateY(-6px) scale(1.02);
+    border-color: #3b82f6;
+    box-shadow: 0 0 25px rgba(59,130,246,0.4);
+}
+.product img {
+    width: 100%;
+    height: 140px;
+    object-fit: contain;
+}
+.product h3 { font-size: 14px; }
+.product p { color: #22c55e; font-weight: bold; }
+.product button.buy {
+    margin-top: 10px;
+    padding: 6px 14px;
+    font-size: 12px;
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    border: none;
+    border-radius: 6px;
+    color: white;
+    cursor: pointer;
+    box-shadow: 0 0 10px #06b6d4;
+}
+/* ===== МОДAЛЬНОЕ ОКНО ПОД СТИЛЬ САЙТА (КОСМОС) ===== */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(2, 6, 23, 0.7); /* Полупрозрачный темный фон */
+    backdrop-filter: blur(8px); /* Размытие заднего плана */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Выше, чем кнопка корзины */
+}
+
+/* Контентная область карточки */
+.modal-content {
+
+    background: linear-gradient(to bottom right, rgba(2, 6, 23, 0.95), rgba(20, 20, 60, 0.95));
+    backdrop-filter: blur(15px);
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 30px;
+    width: 90%;
+    max-width: 600px;
+    position: relative;
+    color: #e2e8f0;
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4); /* Синее космическое свечение */
+    text-align: center;
+}
+
+/* Кнопка закрытия (крестик) */
+.close-button {
+    position: absolute;
+    top: 15px; 
+    right: 20px;
+    font-size: 28px;
+    color: #cbd5f5;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+}
+.close-button:hover {
+    color: #f87171; /* Красный оттенок при наведении */
+    transform: scale(1.1);
+}
+
+/* Заголовок товара внутри окна */
+#modal-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: white;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+}
+
+/* Описание товара */
+#modal-description {
+    display: flex;
+    color: #cbd5f5;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* Цена внутри окна */
+.price { 
+    font-weight: bold; 
+    color: #22c55e; /* Соответствует зеленому цвету цен на сайте */
+    font-size: 1.4em; 
+    margin-bottom: 20px;
+}
+
+/* Кнопка действия внутри модального окна */
+.buy-button { 
+    width: 80%;
+    padding: 12px; 
+    font-size: 14px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    color: #fff; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    box-shadow: 0 0 15px #06b6d4;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.buy-button:hover { 
+    transform: scale(1.03);
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.8);
+}
+/* ===== МОДAЛЬНОЕ ОКНО ПОД СТИЛЬ САЙТА (КОСМОС) ===== */
+.modal {
+    display: none; /* Скрыто по умолчанию */
+    position: fixed;
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background-color: rgba(2, 6, 23, 0.7); /* Полупрозрачный темный фон */
+    backdrop-filter: blur(8px); /* Размытие заднего плана */
+    justify-content: center;
+    align-items: center;
+    z-index: 2000; /* Выше, чем кнопка корзины */
+}
+
+/* Контентная область карточки */
+.modal-content {
+    background: linear-gradient(to bottom right, rgba(2, 6, 23, 0.95), rgba(20, 20, 60, 0.95));
+    backdrop-filter: blur(15px);
+    border: 1px solid #1e293b;
+    border-radius: 16px;
+    padding: 30px;
+    width: 90%;
+    max-width: 450px;
+    position: relative;
+    color: #e2e8f0;
+    box-shadow: 0 0 30px rgba(59, 130, 246, 0.4); /* Синее космическое свечение */
+    text-align: center;
+}
+
+/* Кнопка закрытия (крестик) */
+.close-button {
+    position: absolute;
+    top: 15px; 
+    right: 20px;
+    font-size: 28px;
+    color: #cbd5f5;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+}
+.close-button:hover {
+    color: #f87171; /* Красный оттенок при наведении */
+    transform: scale(1.1);
+}
+
+/* Заголовок товара внутри окна */
+#modal-title {
+    font-size: 24px;
+    margin-bottom: 15px;
+    color: white;
+    text-shadow: 0 0 10px rgba(59, 130, 246, 0.6);
+}
+
+/* Описание товара */
+#modal-description {
+    color: #cbd5f5;
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+/* Цена внутри окна */
+.price { 
+    font-weight: bold; 
+    color: #22c55e; /* Соответствует зеленому цвету цен на сайте */
+    font-size: 1.4em; 
+    margin-bottom: 20px;
+}
+
+/* Кнопка действия внутри модального окна */
+.buy-button { 
+    width:80%;
+    padding: 12px; 
+    font-size: 14px;
+    font-weight: bold;
+    background: linear-gradient(135deg, #3b82f6, #06b6d4);
+    color: #fff; 
+    border: none; 
+    border-radius: 8px; 
+    cursor: pointer; 
+    box-shadow: 0 0 15px #06b6d4;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+.buy-button:hover { 
+    transform: scale(1.03);
+    box-shadow: 0 0 25px rgba(6, 182, 212, 0.8);
+}
+/* ===== СТИЛИЗАЦИЯ СТРОКИ ПОИСКА ===== */
+.search-container {
+    text-align: center;
+    padding: 30px 20px; /* Увеличили отступы сверху и снизу */
+    position: relative;
+    z-index: 10;
+}
+
+#search-input {
+    padding: 14px 25px; /* Сделали инпут выше и просторнее внутри */
+    width: 100%;
+    max-width: 800px; 
+    font-size: 16px;
+    font-family: "Inter", sans-serif;
+    color: #e2e8f0;
+    
+    /* Космический полупрозрачный стиль */
+    background: rgba(2, 6, 23, 0.7);
+    backdrop-filter: blur(10px);
+    border: 1px solid #1e293b;
+    border-radius: 30px; /* Округлые края */
+    
+    outline: none;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5), 
+                0 0 10px rgba(59, 130, 246, 0.1);
+    
+    transition: all 0.3s ease;
+}
+
+/* Эффект при клике на строку поиска (Фокус) */
+#search-input:focus {
+    border-color: #06b6d4; /* Изменение цвета границ на бирюзовый */
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.4), 
+                0 0 40px rgba(5b, 130, 246, 0.2);
+    transform: scale(1.02); /* Легкое увеличение при вводе текста */
+}
+
+/* Стиль текста внутри инпута по умолчанию (placeholder) */
+#search-input::placeholder {
+    color: #cbd5f5;
+    opacity: 0.5;
+    transition: opacity 0.3s;
+}
+
+#search-input:focus::placeholder {
+    opacity: 0.3; /* Прячется сильнее, когда пользователь начинает писать */
+}
+
+/* ========================================================
+   COSMIC STYLE: ADD PRODUCT MODAL
+   ======================================================== */
+
+/* Кнопка "Sell Your Tech" в меню (как пульт управления кораблем) */
+.menu button[onclick="openAddProductModal()"] {
+  background: linear-gradient(135deg, #0098fe 0%, #4f78fe 100%);
+  color: #050515;
+  border: 1px solid #00f2fe;
+  border-radius: 8px;
+  padding: 10px 22px;
+  font-size: 14px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+  transition: all 0.3s ease;
+  margin-left: auto;
+}
+
+.menu button[onclick="openAddProductModal()"]:hover {
+  background: transparent;
+  color: #00f2fe;
+  box-shadow: 0 0 25px rgba(0, 242, 254, 0.8), inset 0 0 10px rgba(0, 242, 254, 0.5);
+  transform: translateY(-2px);
+}
+
+/* Задний фон модального окна — глубокий космос с размытием звезд */
+#add-product-modal {
+  background-color: rgba(5, 5, 15, 0.75);
+  backdrop-filter: blur(8px); /* Эффект матового стекла иллюминатора */
+}
+
+/* Контейнер формы — футуристический интерфейс / бортовой компьютер */
+#add-product-modal .modal-content {
+  background: rgba(10, 10, 30, 0.9);
+  border: 2px solid #00f2fe;
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(0, 242, 254, 0.25), 
+              inset 0 0 20px rgba(0, 242, 254, 0.1);
+  color: #e0e5ff;
+  padding: 30px;
+}
+
+/* Заголовок формы */
+#add-product-modal h2 {
+  color: #00f2fe;
+  text-shadow: 0 0 10px rgba(0, 242, 254, 0.6);
+  font-family: 'Orbitron', 'Segoe UI', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 22px;
+}
+
+/* Неоновые подписи к полям */
+#user-product-form label {
+  color: #9d85ff;
+  text-shadow: 0 0 5px rgba(157, 133, 255, 0.3);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Космические инпуты (черные с неоновой орбитой-границей) */
+#user-product-form input[type="text"],
+#user-product-form input[type="number"],
+#user-product-form select,
+#user-product-form textarea {
+  background-color: rgba(5, 5, 15, 0.8);
+  border: 1px solid #3d3b70;
+  border-radius: 6px;
+  color: #fff;
+  font-size: 15px;
+  padding: 11px;
+  transition: all 0.3s ease;
+}
+
+/* Эффект гиперпрыжка при фокусе на поле */
+#user-product-form input:focus,
+#user-product-form select:focus,
+#user-product-form textarea:focus {
+  border-color: #00f2fe;
+  box-shadow: 0 0 15px rgba(0, 242, 254, 0.4);
+  background-color: rgba(15, 15, 40, 0.9);
+}
+
+/* Стилизация выпадающего списка категорий */
+#user-product-form select option {
+  background-color: #0a0a1e;
+  color: #fff;
+}
+
+/* Зона загрузки файлов как сканер космолета */
+#user-product-form input[type="file"] {
+  background: rgba(157, 133, 255, 0.1);
+  border: 1px dashed #9d85ff;
+  color: #9d85ff;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+#user-product-form input[type="file"]:hover {
+  background: rgba(157, 133, 255, 0.2);
+  box-shadow: 0 0 10px rgba(157, 133, 255, 0.4);
+}
+
+/* Финальная кнопка запуска товара на орбиту "Post Product" */
+#user-product-form .buy-button {
+  background: linear-gradient(135deg, #7928ca 0%, #ff0080 100%);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  box-shadow: 0 0 20px rgba(255, 0, 128, 0.4);
+  transition: all 0.3s ease;
+}
+
+#user-product-form .buy-button:hover {
+  box-shadow: 0 0 30px rgba(255, 0, 128, 0.8);
+  transform: scale(1.02);
+}
+
+/* Кнопка закрытия модалки (крестик) */
+#add-product-modal .close-button {
+  color: #3d3b70;
+  transition: color 0.2s;
+}
+#add-product-modal .close-button:hover {
+  color: #ff0080;
+  text-shadow: 0 0 8px #ff0080;
+}
+
+.product button.buy:hover { transform: scale(1.1); }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1100px) { #main-products { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 700px) { #main-products { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 500px) { #main-products { grid-template-columns: 1fr; } }
+
+#brand-menu { display: none; justify-content: center; gap: 10px; padding: 10px; }

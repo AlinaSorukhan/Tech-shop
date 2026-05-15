@@ -1,0 +1,103 @@
+<!--<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tech Store</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  Tech Store
+  <button id="cart">Cart (0)</button>
+</header>
+
+ Меню категорий 
+<div class="menu">
+  <button onclick="filterCategory('all')">All Goods </button>
+  <button onclick="filterCategory('phones')">Phones</button>
+  <button onclick="filterCategory('laptops')">Laptops / PCs</button>
+  <button onclick="filterCategory('accessories')">Accessories</button>
+</div>
+
+< Меню брендов только для телефонов 
+<div class="menu" id="brand-menu">
+  <button onclick="filterBrand('all')">All Brands</button>
+  <button onclick="filterBrand('apple')">Apple</button>
+  <button onclick="filterBrand('samsung')">Samsung</button>
+  <button onclick="filterBrand('xiaomi')">Xiaomi</button>
+</div>
+
+<Корзина 
+<div id="cart">
+  <h3>Cart</h3>
+  <div id="cart-items"></div>
+  <div class="total">Total: €0</div>
+ 
+</div>
+
+<!- Контейнер для всех товаров --
+<div class="container">
+
+  <!- Телефоны -->
+   <!--Apple-->
+  
+  <!--samsung--
+  <div class="product" data-category="phones" data-brand="samsung" data-name="Samsung Galaxy S26 Ultra 16GB/1TB" data-price="899.00">
+      <img src="image/SGS23.png">
+      <h3>Samsung Galaxy S26 Ultra 16GB/1TB</h3>
+      <p class="price">€899.00</p>
+      <button class="buy" onclick="addToCart(this)">Buy Now</button>
+  </div>
+  
+
+  <div class="product" data-category="phones" data-brand="samsung" data-name="Samsung Galaxy S26 12/512GB" data-price="899.00">
+      <img src="image/SGS26ULTRA.png">
+      <h3>Samsung Galaxy S26 12/512GB</h3>
+      <p class="price">€899.00</p>
+      <button class="buy" onclick="addToCart(this)">Buy Now</button>
+  </div>
+
+
+  <--Xiaomi--
+  <div class="product" data-category="phones" data-brand="xiaomi" data-name="Xiaomi 13" data-price="1680.00">
+    <img src="image/X13.phg.jpg">
+    <h3>Xiaomi 13</h3>
+    <p class="price">€1680.00</p>
+    <button class="buy" onclick="addToCart(this)">Buy Now</button>
+  </div>
+  <-- Ноутбуки / ПК 
+  <div class="product" data-category="laptops" data-name="UltraBook Z" data-price="599">
+    <img src="https://via.placeholder.com/280x200?text=Laptop">
+    <h3>UltraBook Z</h3>
+    <p class="price">$599</p>
+    <button class="buy" onclick="addToCart(this)">Buy Now</button>
+  </div>
+
+  <div class="product" data-category="laptops" data-name="Gaming PC X" data-price="1099">
+    <img src="https://via.placeholder.com/280x200?text=PC">
+    <h3>Gaming PC X</h3>
+    <p class="price">$1099</p>
+    <button class="buy" onclick="addToCart(this)">Buy Now</button>
+  </div>
+
+ Аксессуары 
+  <div class="product" data-category="accessories" data-name="BassSound Pro" data-price="79">
+    <img src="https://via.placeholder.com/280x200?text=Headphones">
+    <h3>BassSound Pro</h3>
+    <p class="price">$79</p>
+    <button class="buy" onclick="addToCart(this)">Buy Now</button>
+  </div>
+
+  <div class="product" data-category="accessories" data-name="Airpods 4" data-price="60">
+    <img src="image/airpods.png">
+    <h3>Airpods 4</h3>
+    <p class="price">$60</p>
+    <button class="buy" onclick="addToCart(this)">Buy Now</button>
+  </div>--
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

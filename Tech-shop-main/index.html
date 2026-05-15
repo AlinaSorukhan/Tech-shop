@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tech Store</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <div class="hero">
+        <h2>New Tech 2026</h2>
+        <p>The best phones and laptops</p>
+    </div>
+</header>
+
+<!-- Кнопка корзины -->
+<div id="cart-container">
+    <button id="cart-btn">
+        🛒 <span id="cart-count">0</span>
+    </button>
+    <div id="cart">
+        <div id="cart-items"></div>
+        <div class="total">Total: €0</div>
+        <button class="clear-cart-btn">Clear Cart</button>
+        <button class="checkout-btn">Pay Now</button>
+    </div>
+</div>
+
+<!-- Меню категорий -->
+<div class="menu">
+    <button onclick="selectCategory('all', this)" class="active">All Goods</button>
+    <button onclick="selectCategory('phones', this)">📱 Telephones</button>
+    <button onclick="selectCategory('laptops', this)">💻 Laptops/PCs</button>
+    <button onclick="selectCategory('accessories', this)">🎧 Accessories</button>
+    <button onclick="openAddProductModal()" >➕ Sell Your Tech</button>
+</div>
+
+<!-- Меню брендов (скрыто изначально) -->
+<div class="menu" id="brand-menu" style="display:none">
+    <button onclick="selectBrand('all', this)" class="active">All Brands</button>
+    <button onclick="selectBrand('apple', this)">Apple</button>
+    <button onclick="selectBrand('samsung', this)">Samsung</button>
+    <button onclick="selectBrand('xiaomi', this)">Xiaomi</button>
+</div>
+<!-- Меню брендов ноутбуков -->
+<div class="menu" id="laptop-brand-menu" style="display:none">
+    <button onclick="selectLaptopBrand('all', this)" class="active">All Brands</button>
+    <button onclick="selectLaptopBrand('apple', this)">MacBook</button>
+    <button onclick="selectLaptopBrand('Dell', this)">Dell</button>
+    <button onclick="selectLaptopBrand('asus', this)">Asus</button>
+</div>
+<!-- поиск -->
+
+<div class="search-container" style="text-align: center; padding: 15px;">
+    <input type="text" id="search-input" placeholder="Search tech..." oninput="handleSearch()" >
+</div>
+
+<!-- Модальное окно (всплывающая карточка) -->
+
+<div id="product-modal" class="modal">
+  <div class="modal-content">
+    <span class="close-button" onclick="closeProductModal()">&times;</span>
+    
+    <!-- ДОБАВЛЕНО: Тег для динамической картинки товара -->
+    <img id="modal-img" src="" alt="Product Image" style="width:100%; max-height:200px; object-fit:contain; margin-bottom:15px; border-radius:8px;">
+    
+    <h2 id="modal-title">Название товара</h2>
+    <p id="modal-price" class="price">Цена</p>
+    <p id="modal-description">Описание товара</p>
+    
+    <!-- ИСПРАВЛЕНО: Добавлен id="modal-buy-btn" для связки со скриптом корзины -->
+    <button id="modal-buy-btn" class="buy-button">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Контейнер товаров (сюда JS сам добавит все товары) -->
+
+
+<!-- Контейнер товаров -->
+<div id="main-products"></div>
+
+<script src="script.js"></script>
+<script src="product.js"></script>
+</body>
+</html>
