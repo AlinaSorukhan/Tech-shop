@@ -85,7 +85,7 @@ Currently, the project includes:
 
 To add a product to the catalog:
 
-1. Open the `script.js` file
+1. Open the `products.js` file
 2. Find the `products` constant
 3. Add a new object using the existing template
 
@@ -94,7 +94,7 @@ To add a product to the catalog:
 ## Working with files and folders
 
 All logic is written in `script.js`
-The working HTML file is index.html; the other HTML files are just previous attempts
+The working HTML file is index.html
 All styles are in style.css
 
 In the folders 
