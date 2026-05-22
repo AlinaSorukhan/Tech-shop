@@ -1,0 +1,47 @@
+/* ===== АНИМИРОВАННЫЙ КОСМОС ===== */
+body::before {
+    content: "";
+    position: fixed;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(white 1px, transparent 1px);
+    background-size: 50px 50px;
+    animation: starsMove 120s linear infinite;
+    opacity: 0.15;
+    z-index: -1;
+}
+@keyframes starsMove {
+    from { transform: translate(0,0); }
+    to { transform: translate(-500px, -500px); }
+}
+.menu button {
+    padding: 8px 16px;
+    border: 1px solid #1e293b;
+    background: transparent;
+    color: #cbd5f5;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+.menu button:hover {
+    background: linear-gradient(270deg, #3b82f6, #06b6d4, #9333ea);
+    background-size: 400% 400%;
+    animation: gradientMove 3s ease infinite;
+    color: white;
+    box-shadow: 0 0 15px #3b82f6;
+}
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ===== BODY ===== */
+body {
+    font-family: "Inter", Arial, sans-serif;
+    margin: 0;
+    background: radial-gradient(circle at top, #020617, #000);
+    color: #e2e8f0;
+}

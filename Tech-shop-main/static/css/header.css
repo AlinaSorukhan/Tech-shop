@@ -1,0 +1,31 @@
+/* ===== HEADER ===== */
+header {
+    background: rgba(2,6,23,0.8);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    text-align: center;
+    position: relative;
+    border-bottom: 1px solid #1e293b;
+}
+
+/* ===== HERO ===== */
+.hero {
+    height: 240px;
+    background: linear-gradient(rgba(2,6,23,0.7), rgba(2,6,23,1)),
+    url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color:white;
+    text-shadow: 0 0 15px rgba(59,130,246,0.8);
+}
+.hero h2 { font-size: 36px; animation: pulse 2.5s infinite; }
+.hero p { opacity:0.9; }
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
